@@ -27,7 +27,7 @@ public class LoginServlet extends HttpServlet {
 //        Create StringBuilder to hold response string
         StringBuilder sb = new StringBuilder();
         if ("admin".equals(userName) && "admin".equalsIgnoreCase(password)) {
-            sb.append("<h2>Welcome admin!</h2>")
+            sb.append("<h2>Welcome admin!</h2>\n")
                     .append("You are successfully logged in.");
         } else {
             sb.append(createForm("Invalid user id or password! Please try again."));
@@ -38,13 +38,14 @@ public class LoginServlet extends HttpServlet {
     }
 
     protected String createForm(String errorMsg) {
-        StringBuilder sb = new StringBuilder("<h2>LOGIN</h2>");
+        StringBuilder sb = new StringBuilder("<body>\n")
+                .append("    <h2>LOGIN</h2>\n");
 
 //        Check whether error message is to be displayed.
         if (errorMsg != null) {
-            sb.append("<span style='color: red;'>")
+            sb.append("    <span style='color: red;'>")
                     .append(errorMsg)
-                    .append("</span>");
+                    .append("</span>\n");
         }
 
 //        Create form
@@ -70,10 +71,11 @@ public class LoginServlet extends HttpServlet {
                 .append("                    </label>\n")
                 .append("                </td>\n")
                 .append("            </tr>\n")
-                .append("        </table>")
+                .append("        </table>\n")
                 .append("        <button type=\"submit\" name=\"submit\">SUBMIT</button>\n")
                 .append("        <button type=\"reset\" name=\"reset\">RESET</button>\n")
-                .append("    </form>\n");
+                .append("    </form>\n")
+                .append("</body>\n");
 
         return sb.toString();
     }
