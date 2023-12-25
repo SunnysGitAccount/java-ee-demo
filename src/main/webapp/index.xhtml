@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="jakarta.faces.html">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+    <title>JSF - Login</title>
+</head>
+<body>
+    <h2>LOGIN</h2>
+    <!--@elvariable id="loginBean" type="dev.sunny.javaeedemo.LoginBean"-->
+    <h:outputText value="#{loginBean.errorMsg}"
+                  rendered="#{loginBean.errorMsg != null}"
+                  style="color: #E3423A"/>
+    <h:form>
+        <table>
+            <tr>
+                <td>
+                    <label>User Name</label>
+                </td>
+                <td>
+                    <h:inputText id="userName" value="#{loginBean.userName}"/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>Password</label>
+                </td>
+                <td>
+                    <h:inputSecret id="password" value="#{loginBean.password}"/>
+                </td>
+            </tr>
+        </table>
+        <h:commandButton value="SUBMIT" action="#{loginBean.validate}" />
+    </h:form>
+</body>
+</html>
